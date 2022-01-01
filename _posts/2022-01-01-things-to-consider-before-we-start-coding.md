@@ -84,7 +84,7 @@ The main project will require the features, if we have client custom, we need to
 ## Unit Testing
 I knew this one is a common dilemma for all of us, most of the time developers will skip this process in order to meet the timeline. As a result we always end up repeating the manual testing.
 
-If we think of it like a hussle for us prior to meet our deadlines, we need to keep in mind that there is no need to have it already coded in full blast unit testing, we only need to code at least a prototype then later on we complete the unit testing gradually.
+If we think of it like a hussle for us prior to meet our deadlines, we need to keep in mind that there is no need to have it already coded in full, we only need to code at least a prototype then later on we complete the unit testing gradually.
 
 Because the real problem here is when the client already encounter the issues, we already reach the deadline and there is no time for us to design how we inject the unit test case because everything the client raise will be urgent.
 
