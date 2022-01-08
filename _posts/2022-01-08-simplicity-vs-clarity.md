@@ -6,12 +6,12 @@ categories: architecture
 ---
 Hi, it's been a while since my last post, I've been so busy this week, don't have much time for myself. :(
 
-Anyway, for the introduction about this post, I will share how I failed to design a Nodejs backend just because I want to simplify everything, to be honest there are so many attempts I did failed on my entire career. I hope this one will help the others.
+Anyway, for the brief introduction I will share how I failed to design a Nodejs backend just because I want to simplify everything.
 
 While trying to experiment by mixing logic and existing source code implementations,
-I tried to simplify everything by creating a parameter naming convention, `use same parameter names in Backend, Database and Front-end`.
+I tried to simplify things by using a parameter naming convention. `Use same parameter names in Backend, Database and Front-end`.
 
-The coding is really fast, **just copy and paste the parameter names from Database to Backend upto Front-end is like coding in breeze.**  Saved my braincells from parameter names and keyboard thing.
+The coding is easy and really fast, **just copy and paste the parameter names from Database to Backend upto Front-end is like coding in breeze**, rescued some of my braincells from thinking about parameter names and keyboard thing.
 
 Yet. it is a parameter naming issue if we failed to monitor the implementation.
 
@@ -106,14 +106,14 @@ const process = async ({
 -
 -
 
-![spiders.jpg](/assets/images/spidermans.jpg)
+instead of simplicity, I made the backend convuluted enough to mistrust the parameters.
 
-instead of simplicity, I made things convuluted.
-as much as possible, avoid using the generic term `user_id` alone, we have to include the purpose when dealing with generic parameter names.
+![spiders.jpg](/assets/images/spidermans.jpg)
 
 
 ### Fix
 always separate the session related parameters from domain logic parameters. we can us IoC function hierarchy to achieve this.
+Also as much as possible, avoid using the generic term `user_id` alone, we have to include the purpose when dealing with generic parameter names.
 
 ```js
 // revised backend/models/employee.js
