@@ -6,12 +6,12 @@ categories: architecture
 ---
 Hi, it's been a while since my last post, I've been so busy this week, don't have much time for myself. :(
 
-Anyway, for the introduction about this post, I will share how I failed to design a Nodejs backend just because I want to simplify everything, to be honest there are so many attempts that I failed on my entire career. I hope this one will help the others.
+Anyway, for the introduction about this post, I will share how I failed to design a Nodejs backend just because I want to simplify everything, to be honest there are so many attempts I did failed on my entire career. I hope this one will help the others.
 
 While trying to experiment by mixing logic and existing source code implementations,
-I simplify everything by creating a parameter naming convention, `use same parameter names in Backend, Database and Front-end`.
+I tried to simplify everything by creating a parameter naming convention, `use same parameter names in Backend, Database and Front-end`.
 
-The coding is really fast, **just copy and paste the parameter names from Database to Backend upto Front-end is like coding in breeze.**  Saved my braincells for parameter names and keyboard thing.
+The coding is really fast, **just copy and paste the parameter names from Database to Backend upto Front-end is like coding in breeze.**  Saved my braincells from parameter names and keyboard thing.
 
 Yet. it is a parameter naming issue if we failed to monitor the implementation.
 
@@ -69,11 +69,11 @@ class Employee {
 }
 ```
 
--
--
--
+the above code was clear and straight, until theres a bug.
 
-Reading the above code is so clean and straight to the point, until I encountered a bug.
+-
+-
+-
 
 ```dart
 /// models/employee.dart
@@ -106,12 +106,14 @@ const process = async ({
 -
 -
 
-instead of simplicity I end up to mistrust.
+![spiders.jpg](/assets/images/spidermans.jpg)
 
-![spiders.jpg](/assets/images/spiders.jpg)
+instead of simplicity, I made things convuluted.
+as much as possible, avoid using the generic term `user_id` alone, we have to include the purpose when dealing with generic parameter names.
+
 
 ### Fix
-always separate the session related parameters to domain logic parameters. we can us IoC function hierarchy to achieve this.
+always separate the session related parameters from domain logic parameters. we can us IoC function hierarchy to achieve this.
 
 ```js
 // revised backend/models/employee.js
@@ -126,7 +128,7 @@ const process = async (
         last_name,
         nick_name,
         company_id,
-        user_id,
+        modified_by_user_id,    // <-- renamed
     }) => {
         // process here
     }
