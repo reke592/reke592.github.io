@@ -21,11 +21,13 @@
 title: Portfolio
 email: erric.rapsing@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  A collection of ideas and experience while doing a fullstack development task.
+  let's build.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: 
 github_username:  reke592
+linkedin_name: Erric Rapsing
+linkedin_username: erric-rapsing-74b40b203
 
 # Build settings
 theme: minima

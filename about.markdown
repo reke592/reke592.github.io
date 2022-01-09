@@ -3,11 +3,18 @@ layout: page
 title: About
 permalink: /about/
 ---
-### Hi! My name is Erric, I'm a software architecture enthusiast
-Discovering the most intrinsic part of domain is like designing a better future.
+#### Hi! my name is Erric Rapsing, I'm a software architecture enthusiast.
+made this to share about my experiences in software development career.
 
-> Just using a flexible language doesn't create a flexible system
-> \- Eric Evans
+#### More about me?
+I'm a cat lover, if you do love cats then were good ;)  
+also I can play acoustic guitar
+
+<br/>
+
+#### Why can't find any existing project details here
+My current job is also my very first software development career, I do have signed NDA with them,
+maybe in the future if they allow me to add the project details here. :)
 
 
 <!-- 
