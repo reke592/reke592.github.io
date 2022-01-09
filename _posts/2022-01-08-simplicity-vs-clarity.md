@@ -4,7 +4,7 @@ title: Simplicity vs Clarity
 date: 2022-01-08 18:20:00 +0800
 categories: architecture
 ---
-Untangling the convuluted backend parameters.
+Untangling the convoluted backend parameters.
 
 <br>
 
@@ -72,7 +72,7 @@ class Employee {
 }
 ```
 
-the above code was easy to understand because of transparency, until the problem arise.  
+The above code was easy to understand because of transparency, until the problem arise.  
 
 <br>
 
@@ -107,7 +107,7 @@ const process = async ({
 
 <br>
 
-instead of simplicity, I made the backend convuluted enough to mistrust the origin of parameters.
+Instead of simplicity, I made the backend convoluted enough to mistrust the origin of parameters.
 
 
 ![spiders.jpg](/assets/images/spidermans.jpg)
@@ -115,7 +115,7 @@ instead of simplicity, I made the backend convuluted enough to mistrust the orig
 <br>
 
 ### Fix
-always separate the session related parameters from domain logic parameters. we can use IoC function hierarchy to achieve this. Also avoid using the generic term `user_id` alone, we have to include at least the origin or purpose when dealing with generic parameter names.
+Always separate the session related parameters from domain logic parameters. we can use IoC function hierarchy to achieve this. Also avoid using the generic term `user_id` alone, we have to include at least the origin or purpose when dealing with generic parameter names.
 
 ```js
 // revised backend/models/employee.js
