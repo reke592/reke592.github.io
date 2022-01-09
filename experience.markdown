@@ -25,6 +25,15 @@ School IT / Accounting Encoder<br>
 # Other Experience
 
 **RapidPass**<br>
-DevCon Community Project<br>
-April 2020 - [volunteer](https://dctx.ph/volunteers/)<br>
-Contribution: Infosec<br>
+DevCon Community Project  
+April 2020 - [volunteer](https://dctx.ph/volunteers/)  
+Contribution: Infosec  
+
+<br>
+<hr>
+<br>
+
+# Education
+**Bachelor of Science in Computer Science**  
+Norzagaray College  
+2008 - 2012  
