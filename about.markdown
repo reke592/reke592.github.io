@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 #### Hi! my name is Erric Rapsing, I'm a software architecture enthusiast.
-made this to share about my experiences in software development career.
+made this to share my experiences in software development career. Also to improve my grammar.
 
 #### More about me?
 I'm a cat lover, if you do love cats then were good :D  
