@@ -4,6 +4,10 @@ title: Simplicity vs Clarity
 date: 2022-01-08 18:20:00 +0800
 categories: architecture
 ---
+Untangling the convuluted backend parameters.
+
+<br>
+
 Hi, it's been a while since my last post, I've been so busy this week, don't have much time for myself. [:(](# "jk :D, it is my hobby to create programs.")
 
 Anyway, for the brief introduction I will share how I failed to design a Nodejs backend just because I want to simplify everything.
@@ -13,7 +17,6 @@ I tried to simplify things by using a parameter naming convention. `Use same par
 
 The coding is easy and really fast, **just copy and paste the parameter names from Database to Backend upto Front-end is like coding in breeze**, rescued some of my braincells overthinking about parameter names and the keyboard thing.
 
-Yet. it is a parameter naming issue if we failed to monitor the implementation.
 
 Given the below examples:
 ```sql
@@ -47,7 +50,7 @@ const process = async ({
 }
 ```
 ```dart
-/// models/employee.dart
+/// Flutter feature/models/employee.dart
 class Employee {
     int id;
     String name;
@@ -69,22 +72,22 @@ class Employee {
 }
 ```
 
-the above code was clear and straight, until there's a bug.
+the above code was easy to understand because of transparency, until the problem arise.  
 
--
--
--
+<br>
+
+It became a parameter naming issue because of my improper implementation.
 
 ```dart
-/// models/employee.dart
+/// Flutter feature/models/employee.dart
 class Employee {
     int id;
     String name;
     String middle_name;
     String last_name;
     String nick_name;
-    int company_id;     // <-- this belongs to employee
-    int user_id;        // <-- also this
+    int company_id;
+    int user_id;        // <-- this id belongs to employee record
 }
 ```
 ```js
@@ -95,22 +98,21 @@ const process = async ({
     middle_name,
     last_name,
     nick_name,
-    company_id,     // <-- this belongs to employee
-    user_id,        // <-- while this should be the current system user, it is intended for created/modified_by_id
+    company_id,     
+    user_id,            // <-- while this one belongs to the current user, intended for [created|modified]_by_id
 }, transaction) => {
     // some process here to execute
 }
 ```
 
-instead of simplicity, I made the backend convuluted enough to mistrust the origin of parameters.
+<br>
 
--
--
--
+instead of simplicity, I made the backend convuluted enough to mistrust the origin of parameters.
 
 
 ![spiders.jpg](/assets/images/spidermans.jpg)
 
+<br>
 
 ### Fix
 always separate the session related parameters from domain logic parameters. we can use IoC function hierarchy to achieve this. Also avoid using the generic term `user_id` alone, we have to include at least the origin or purpose when dealing with generic parameter names.
@@ -158,16 +160,24 @@ const process = async (
 ```js
 // NodeJS backend/controllers/employee.js
 const process = async (req, res) => {
-    let transaction = await createTransaction();
-    let command = await Employees.process({transaction}, req.session);
-    let result = await command(req.body);
-    await commit(transaction);
-    return res.status(200).json(result);
+    let transaction;
+    try{
+        transaction = await createTransaction();
+        let command = await Employees.process({transaction}, req.session);
+        let result = await command(req.body);
+        await commit(transaction);
+        return res.status(200).json(result);
+    } catch (e) {
+        await rollback(transaction);
+        throw e;
+    }
 }
 ```
 
 ## Conclusion
 When there is need to simplify things, a ruling convention is not always the solution.
-Most of the time we overlooked the current architecture the reason why we lose clarity.
+Most of the time there is something we overlooked in the current architecture the reason why we lose clarity.
+
+<br>
 
 <center>- end -</center>

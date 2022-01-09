@@ -7,8 +7,8 @@ permalink: /about/
 made this to share about my experiences in software development career.
 
 #### More about me?
-I'm a cat lover, if you do love cats then were good ;)  
-also I can play acoustic guitar
+I'm a cat lover, if you do love cats then were good :D  
+sometimes I play acoustic guitar to have serenity
 
 <br/>
 
