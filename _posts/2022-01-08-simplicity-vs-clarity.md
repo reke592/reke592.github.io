@@ -72,11 +72,11 @@ class Employee {
 }
 ```
 
-The above code was easy to understand because of transparency, until the problem arise.  
+The code above is easy to understand because of the transparency, until the problem arises.  
 
 <br>
 
-It became a parameter naming issue because of my improper implementation.
+There was a parameter naming issue due to my improper implementation.
 
 ```dart
 /// Flutter feature/models/employee.dart
@@ -107,7 +107,7 @@ const process = async ({
 
 <br>
 
-Instead of simplicity, I made the backend convoluted enough to mistrust the origin of parameters.
+Instead of simple, I made the backend convoluted enough to not trust the source of the parameters.
 
 
 ![spiders.jpg](/assets/images/spidermans.jpg)

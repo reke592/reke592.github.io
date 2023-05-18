@@ -2,7 +2,7 @@
 layout: post
 title: Things to consider before we start coding
 date: 2022-01-01 20:19:34 +0800
-categories: architecure
+categories: architecture
 ---
 ## Backend Configurations
 This configuration is the typical file that we use in our backend service. The main goal is to identify the configurations that are crucial for the application restart. We need to store all dynamic setup in database instead of using a flat json file.
