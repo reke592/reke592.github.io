@@ -1,0 +1,7 @@
+[
+    {
+        "title": "Tickets",
+        "initialRouteName": "ticket list",
+        "repositoryUrl": "https://github.com/reke592/bloc_practice/blob/main/lib/src/tickets/tickets.dart"
+    }
+]
