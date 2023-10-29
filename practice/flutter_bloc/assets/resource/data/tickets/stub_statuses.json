@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Open"
+    },
+    {
+        "name": "For Development"
+    },
+    {
+        "name": "On Development"
+    },
+    {
+        "name": "For Testing"
+    },
+    {
+        "name": "On Testing"
+    },
+    {
+        "name": "For Verification"
+    },
+    {
+        "name": "For Merge Feature"
+    },
+    {
+        "name": "Merged Feature"
+    },
+    {
+        "name": "Closed"
+    }
+]

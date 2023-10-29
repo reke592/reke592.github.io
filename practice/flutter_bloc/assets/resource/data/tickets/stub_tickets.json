@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "customer": "ABC Inc.",
+        "title": "Internet Connectivity Issue",
+        "narration": "Experiencing frequent disconnections with internet. Need assistance.",
+        "status": "Open",
+        "created": "2023-10-29T08:30:00"
+    },
+    {
+        "id": 2,
+        "customer": "DEF Alliance",
+        "title": "Billing Inquiry",
+        "narration": "Question about recent bill charges. Need clarification.",
+        "status": "For Development",
+        "created": "2023-10-29T10:15:00"
+    },
+    {
+        "id": 3,
+        "customer": "GHI Machineries",
+        "title": "Product Defect Report",
+        "narration": "Received a defective product. Requesting replacement or refund.",
+        "status": "On Testing",
+        "created": "2023-10-29T11:45:00"
+    },
+    {
+        "id": 4,
+        "customer": "JK Laboratories",
+        "title": "Software Bug Report",
+        "narration": "Found a critical bug in your software. Urgent fix required.",
+        "status": "For Testing",
+        "created": "2023-10-29T14:20:00"
+    },
+    {
+        "id": 5,
+        "customer": "MiNO Corp.",
+        "title": "Service Request",
+        "narration": "Need to request a new service installation at our location.",
+        "status": "For Verification",
+        "created": "2023-10-29T16:50:00"
+    },
+    {
+        "id": 6,
+        "customer": "ABC Inc.",
+        "title": "Product Inquiry",
+        "narration": "Interested in your new product. Want to know more details.",
+        "status": "On Development",
+        "created": "2023-10-30T09:10:00"
+    },
+    {
+        "id": 7,
+        "customer": "DEF Alliance",
+        "title": "Hardware Issue",
+        "narration": "Our hardware is malfunctioning. Need urgent repair.",
+        "status": "Open",
+        "created": "2023-10-30T11:30:00"
+    },
+    {
+        "id": 8,
+        "customer": "GHI Machineries",
+        "title": "Feedback",
+        "narration": "Overall, we are satisfied with your service, but some improvements are needed.",
+        "status": "Closed",
+        "created": "2023-10-30T13:40:00"
+    },
+    {
+        "id": 9,
+        "customer": "JK Laboratories",
+        "title": "Product Return Request",
+        "narration": "Received the wrong product. Need to return it and get the correct one.",
+        "status": "On Development",
+        "created": "2023-10-31T08:15:00"
+    },
+    {
+        "id": 10,
+        "customer": "MiNO Corp.",
+        "title": "Account Access Issue",
+        "narration": "Unable to access our account. Need assistance to resolve this issue.",
+        "status": "For Development",
+        "created": "2023-10-31T10:45:00"
+    },
+    {
+        "id": 11,
+        "customer": "ABC Inc.",
+        "title": "Delivery Delay Complaint",
+        "narration": "Our recent order has been delayed. We need it urgently.",
+        "status": "For Testing",
+        "created": "2023-10-31T12:55:00"
+    },
+    {
+        "id": 12,
+        "customer": "DEF Alliance",
+        "title": "Service Termination Request",
+        "narration": "We want to terminate our service contract. Please guide us through the process.",
+        "status": "Open",
+        "created": "2023-10-31T15:30:00"
+    },
+    {
+        "id": 13,
+        "customer": "GHI Machineries",
+        "title": "Emergency Support Needed",
+        "narration": "Facing a critical issue that requires immediate attention. Urgent support required.",
+        "status": "On Testing",
+        "created": "2023-11-01T08:00:00"
+    },
+    {
+        "id": 14,
+        "customer": "JK Laboratories",
+        "title": "Software Enhancement Request",
+        "narration": "We have some feature requests for your software. Can you implement them?",
+        "status": "For Merge Feature",
+        "created": "2023-11-01T10:20:00"
+    },
+    {
+        "id": 15,
+        "customer": "MiNO Corp.",
+        "title": "New Project Discussion",
+        "narration": "Interested in discussing a new project collaboration. Please contact us.",
+        "status": "Open",
+        "created": "2023-11-01T12:45:00"
+    },
+    {
+        "id": 16,
+        "customer": "ABC Inc.",
+        "title": "Security Concern",
+        "narration": "We've noticed some security vulnerabilities. Need immediate action.",
+        "status": "Closed",
+        "created": "2023-11-02T09:30:00"
+    },
+    {
+        "id": 17,
+        "customer": "DEF Alliance",
+        "title": "Product Recall Request",
+        "narration": "Our product has a manufacturing defect. Requesting a recall process.",
+        "status": "For Verification",
+        "created": "2023-11-02T11:50:00"
+    },
+    {
+        "id": 18,
+        "customer": "GHI Machineries",
+        "title": "Invoice Discrepancy",
+        "narration": "Discrepancy in the invoice amount. Need to reconcile.",
+        "status": "Merged Feature",
+        "created": "2023-11-02T13:20:00"
+    },
+    {
+        "id": 19,
+        "customer": "JK Laboratories",
+        "title": "Technical Training Request",
+        "narration": "Requesting technical training for our staff. Please provide details.",
+        "status": "Closed",
+        "created": "2023-11-02T15:10:00"
+    },
+    {
+        "id": 20,
+        "customer": "MiNO Corp.",
+        "title": "Service Feedback",
+        "narration": "Providing feedback on our recent service experience. Overall, it was positive.",
+        "status": "Closed",
+        "created": "2023-11-03T10:05:00"
+    }
+]
