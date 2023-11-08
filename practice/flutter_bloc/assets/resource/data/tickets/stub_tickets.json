@@ -59,9 +59,20 @@
         "id": 8,
         "customer": "GHI Machineries",
         "title": "Feedback",
-        "narration": "Overall, we are satisfied with your service, but some improvements are needed.",
+        "narration": "#000003 Overall, we are satisfied with your service, but some improvements are needed.",
         "status": "Closed",
-        "created": "2023-10-30T13:40:00"
+        "created": "2023-10-30T13:40:00",
+        "mentions": [
+            {
+                "trigger": "#",
+                "start": 0,
+                "end": 7,
+                "text": "#000003",
+                "extra": {
+                    "id": 3
+                }
+            }
+        ]
     },
     {
         "id": 9,
@@ -83,9 +94,20 @@
         "id": 11,
         "customer": "ABC Inc.",
         "title": "Delivery Delay Complaint",
-        "narration": "Our recent order has been delayed. We need it urgently.",
+        "narration": "#000006 Our recent order has been delayed. We need it urgently.",
         "status": "For Testing",
-        "created": "2023-10-31T12:55:00"
+        "created": "2023-10-31T12:55:00",
+        "mentions": [
+            {
+                "trigger": "#",
+                "start": 0,
+                "end": 7,
+                "text": "#000006",
+                "extra": {
+                    "id": 6
+                }
+            }
+        ]
     },
     {
         "id": 12,
@@ -147,9 +169,20 @@
         "id": 19,
         "customer": "JK Laboratories",
         "title": "Technical Training Request",
-        "narration": "Requesting technical training for our staff. Please provide details.",
+        "narration": "#000004 Requesting technical training for our staff. Please provide details.",
         "status": "Closed",
-        "created": "2023-11-02T15:10:00"
+        "created": "2023-11-02T15:10:00",
+        "mentions": [
+            {
+                "trigger": "#",
+                "start": 0,
+                "end": 7,
+                "text": "#000004",
+                "extra": {
+                    "id": 4
+                }
+            }
+        ]
     },
     {
         "id": 20,
