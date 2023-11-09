@@ -67,7 +67,6 @@
                 "trigger": "#",
                 "start": 0,
                 "end": 7,
-                "text": "#000003",
                 "extra": {
                     "id": 3
                 }
@@ -102,7 +101,6 @@
                 "trigger": "#",
                 "start": 0,
                 "end": 7,
-                "text": "#000006",
                 "extra": {
                     "id": 6
                 }
@@ -177,7 +175,6 @@
                 "trigger": "#",
                 "start": 0,
                 "end": 7,
-                "text": "#000004",
                 "extra": {
                     "id": 4
                 }
