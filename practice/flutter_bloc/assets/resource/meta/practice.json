@@ -1,7 +1,0 @@
-[
-    {
-        "title": "Tickets",
-        "initialRouteName": "ticket list",
-        "repositoryUrl": "https://github.com/reke592/bloc_practice/tree/main/lib/src/tickets"
-    }
-]

@@ -1,6 +1,6 @@
 {
-    "name": "bloc_practice",
-    "short_name": "bloc_practice",
+    "name": "ale",
+    "short_name": "ale",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
