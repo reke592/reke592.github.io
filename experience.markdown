@@ -26,7 +26,7 @@ School IT / Accounting Encoder<br>
 
 **RapidPass**<br>
 DevCon Community Project  
-April 2020 - [volunteer](https://dctx.ph/volunteers/)  
+April 2020 - [volunteer](https://youtu.be/yktuFDOcxRk?t=662)  
 Contribution: Infosec  
 
 <br>
