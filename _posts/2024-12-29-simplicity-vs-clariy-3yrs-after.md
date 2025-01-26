@@ -5,7 +5,7 @@ date: 2025-01-25 22:34:00 +0800
 categories: architecture
 ---
 
-Almost three years after writing the first version. Many things have happened that changed the way how I think. In this post, I will discuss how to start writing a scalable a NodeJS backend.
+Three years ago, I shared my initial thoughts on designing a Node.js backend. Since then, my experiences have reshaped my approach to writing scalable and maintainable code. In this post, I’ll explore practical strategies for building a robust Node.js backend while managing evolving requirements and minimizing refactor challenges.
 
 1. Understanding the Project Requirements
 2. Lowering the Impact of Code Refactor
@@ -29,7 +29,7 @@ Most of the time we start small using the MVC pattern because thats what we lear
 
 MVC is not a silver bullet in codebase design. You might also heard of other things like DDD and Clean Architecture. Still not a silver bullet to solve our problems.
 
-- MVC is good for small-medium projects.
+- MVC isn’t a one-size-fits-all solution for codebase design.
 - DDD and Clean Architecture is good for enterprise projects. I'm a fan of DDD, but the way the internet articles describe it makes it seems like an over-engineered solution for everything.
 
 There is a sweet spot in DDD and Clean Architecture, We don't need to follow everything, just pick what's necessary.
@@ -38,31 +38,27 @@ There is a sweet spot in DDD and Clean Architecture, We don't need to follow eve
 
 We are working to develop a NodeJS backend that integrates the records coming from biometric devices to an ERP system. Currently we have the documentations for biometric device `Model-X` by `Manufacturer-X`.
 
-Initially we think of a backend structure like this one below.
-
-- M - data models
-- V - API return
-- C - API controllers
+Initially we think of a backend MVC structure like the one below.
 
 ```
 backend/
-'-- api/
+'-- api/                            # web
 |   '-- controllers/
 |   |   '-- x-controller.js
-|   '-- middlewares/
+|   '-- middlewares/                # validations, default error handler
 |   |   '-- auth.js
 |   |   '-- errors.js
-|   '-- models/
+|   '-- models/                     # data access
 |       '-- x-model.js
 '-- node_modules/
 '-- package.json
 '-- package-lock.json
-'-- index.js
+'-- index.js                        # Express app, routes definitions, etc..
 ```
 
 Let's discuss the possible issues of the above codebase.
 
-In the long run, the `index.js` will became bloated due to startup procedures and server route definitions. We need to separate them like `server` and `startup`. We prefer the `startup` to be a directory instead of a single file, because we have many things to startup, e.g. environment configuration and subprocess entrypoints.
+In the long run, the `index.js` file will become bloated due to startup procedures and server route definitions. We need to separate these into distinct files, such as `server` and `startup`. We prefer the `startup/` to be a directory rather than a single file, as we have many things to initialize, such as environment configuration and subprocess entry points.
 
 ```
 backend/
@@ -75,12 +71,12 @@ backend/
 |   '-- models/
 |       '-- x-model.js
 '-- startup/
-|   '-- environment.js
+|   '-- environment.js                # reads process.env
 '-- node_modules/
-'-- index.js
+'-- index.js                          # startup, controls how the server listen, single process or cluster
 '-- package.json
 '-- package-lock.json
-'-- server.js
+'-- server.js                         # server and route definitions
 ```
 
 ```js
@@ -115,7 +111,7 @@ const somePath = path.join(__dirname, "..", "..", "data");
 // do something...
 ```
 
-The snippet above will be fine if the directory is dedicated only for that controller. Let say in the future we have many controllers referring to that directory. Another scenario, running the same backend scripts but different output directory location. The script above is not flexible enough. To fix that we need to have a common utiliy for directories and a centralized path definitions.
+The snippet above works well if the directory is dedicated solely to that controller. However, consider a scenario where multiple controllers refer to the same directory in the future. Another scenario could involve running the same backend scripts but with different output directory locations. In such cases, the script lacks the flexibility needed. To address this, we need a common utility for directory management and centralized path definitions.
 
 ```js
 // file: ./commons/utils/directories.js
@@ -372,7 +368,7 @@ server.listen(PORT, () => {
 });
 ```
 
-There are cases in deployment where we can't leverage the use of Docker image layer cache because we have `.jar` dependencies in our backend. A `lib/` directory around 150mb in size. Modifying a single line in controller script will invalidate the image cache unless we declare many layers in Dockerfile. The solution for this is to put the backend scripts in a sigle directory called `src/` so any changes in scripts will only affect the specific layer.
+In some deployment scenarios, we cannot fully utilize the Docker image layer cache due to .jar dependencies in our backend, such as a lib/ directory approximately 150MB in size. Modifying a single line in a controller script would invalidate the image cache unless we define multiple layers in the Dockerfile. The solution is to place the backend scripts in a dedicated directory, such as src/, so that any changes to the scripts only impact the specific layer.
 
 **Updated Backend Structure:**
 
@@ -382,39 +378,39 @@ backend/
 |   '-- jars/
 '-- node_modules/
 '-- src/
-|   '-- api/
-|   |   '-- controllers
+|   '-- api/                                    # Web API
+|   |   '-- controllers                         # Express Route handlers
 |   |   |   '-- x-controller.js
 |   |   |   '-- z-controller.js
-|   |   '-- middlewares/
+|   |   '-- middlewares/                        # Validations, error handling
 |   |       '-- auth.js
 |   |       '-- errors.js
-|   '-- commons/
+|   '-- commons/                                # Project-wide utilities
 |   |   '-- errors.js
 |   |   '-- utils/
-|   |      '-- directories.js
-|   '-- infrastructure/
+|   |      '-- directories.js                   # Utility for creating and resolving directory locations
+|   '-- infrastructure/                         # Data sources and integrations
 |   |   '-- cache/
-|   |   |   '-- cache-interface.js
-|   |   |   '-- cache-memory.js
-|   |   |   '-- cache-redis.js
-|   |   |   '-- index.js
-|   |   '-- data/
-|   |   |   '-- models/
+|   |   |   '-- cache-interface.js              # Method signatures to follow by cache implementations
+|   |   |   '-- cache-memory.js                 # In-memory cache (e.g. node-cache)
+|   |   |   '-- cache-redis.js                  # Redis cache (e.g. node-redis)
+|   |   |   '-- index.js                        # Resolved implementation of cache-interface
+|   |   '-- data/                               # Database service (e.g. MySQL)
+|   |   |   '-- models/                         # Model abstractions for database queries
 |   |   |   |   '-- devices.js
-|   |   |   '-- db-client.js
-|   |   '-- AAA-web-integration/
-|   |       '-- models/
+|   |   |   '-- db-client.js                    # Database client (e.g. knex) for use in models
+|   |   '-- AAA-web-integration/                # Third-party web API datasource
+|   |       '-- models/                         # Model abstractions for API queries
 |   |       |   '-- timelogs.js
-|   |       '-- api-client.js
-|   '-- services/
-|   |   '-- device/
-|   |       '-- handleDeviceHeartbeat.js
-|   '-- startup/
-|   |   '-- environment.js
-|   |   '-- integration-AAA-entrypoint.js
-|   '-- index.js
-|   '-- server.js
+|   |       '-- api-client.js                   # Client for API queries (e.g. axios)
+|   '-- services/                               # Business Logic
+|   |   '-- device/                             # A bounded context
+|   |       '-- handleDeviceHeartbeat.js        # Specific problem to handler
+|   '-- startup/                                # Initialization scripts
+|   |   '-- environment.js                      # Process environment definitions, required directories
+|   |   '-- integration-AAA-entrypoint.js       # Background service entry point for thrid-party integrations.
+|   '-- index.js                                # Main entry point, loads startup and controls server execution (single or cluster)
+|   '-- server.js                               # Express app, route definitions, exports an HttpServer instance
 '-- package.json
 '-- package-lock.json
 ```
@@ -422,5 +418,9 @@ backend/
 ## Conclusion
 
 Code refactoring is normal, but minimizing the impact is crucial. The directory structure plays a key role in scalability and maintainability.
+
+- Avoid hardcoding directory paths. Create a centralized utility for directory resolution.
+- Add a services/ directory for reusable backend logic grouped by bounded context.
+- Move models/ into an infrastructure/ directory for a cleaner separation of concerns.
 
 <center>- end -</center>
