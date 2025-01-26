@@ -27,8 +27,6 @@ Every project begins with gathering data from clients. Most of the time, clients
 
 Most of the time we start small using the MVC pattern because thats what we learned in school -- minimalistic approach following SOLID, DRY and KISS principles. Then it will slowly grow into a huge in-house framework.
 
-MVC is not a silver bullet in codebase design. You might also heard of other things like DDD and Clean Architecture. Still not a silver bullet to solve our problems.
-
 - MVC isn’t a one-size-fits-all solution for codebase design.
 - DDD and Clean Architecture is good for enterprise projects. I'm a fan of DDD, but the way the internet articles describe it makes it seems like an over-engineered solution for everything.
 
