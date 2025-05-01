@@ -56,7 +56,7 @@ The Linux filesystem organizes components logically by purpose, unlike Windows, 
 
 ### Package Managers
 
-e.g.
+Are used by operating system to install softwares from trusted sources.
 
 #### Ubuntu:
 
