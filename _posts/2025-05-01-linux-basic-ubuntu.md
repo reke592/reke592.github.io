@@ -104,7 +104,7 @@ Recommendations:
 - `cd` - change directory
   - example:
     - `cd /target/path` - navigate to target path
-    - `cd ~` - shortcut navigate the current user home directory
+    - `cd ~` - shortcut to navigate the current user home directory
 - `cp` - copy
   - options:
     - `-r` - recursive
@@ -147,4 +147,121 @@ Recommendations:
 
 To run a command as super user prefix it with `sudo`. e.g. `sudo cp -ra source target`
 
+### Permissions
+
+Flags:
+
+- 4 - **`r`**ead
+- 2 - **`w`**rite
+- 1 - e**`x`**ecute
+- 0 - no permission
+
+To change the permission of a file or directory we use the `chmod` tool.
+
+Example:
+
+```sh
+# Run the commands below to create a file and display the permission
+touch filename.txt
+ls -l
+
+-rwxrwxrwx 1 username username     0 May  1 19:30 filename.txt
+```
+
+```sh
+# Run the commands below to change the file permissions
+sudo chmod 664 filename.txt
+ls -l
+
+-rw-rw-r-- 1 username username     0 May  1 19:30 filename.txt
+```
+
+The file permission string is divided into 4 parts (from left to right).
+
+- position 1 filetype `-`
+  - `-` reglar file
+  - `d` directory
+  - `s` socket file
+- position 2-4 user access `rw-`
+  - `r` read (4)
+  - `w` write (2)
+  - `x` execute (1)
+- position 5-7 group access `rw-`
+- position 8-10 public access `rw-`
+
+Adding the Flag value will combine the permissions.
+
+- `7` = `rwx`
+- `6` = `rw-`
+- `5` = `r-x`
+- `3` = `-wx`
+- `0` = `---`
+
+### Special Permissions
+
+Flags:
+
+- 4 - User permission
+  - effect on executable files: Runs with the permissions of the file owner (rather than the user executing it)
+- 2 - Group permission
+  - effect on executable files: Runs with the permissions of the file's group
+  - effect on directories: New files created inside inherit the directory's group ownership. (useful for shared folders)
+- 1 - Sticky flag
+  - effect on directories: only the file owner, directory owner or root can delete or rename files inside (even if others have write permissions)
+
+To assign special permissions we include the special flag before the file permission flags in `chmod`
+
+```sh
+sudo chmod 4751 executable
+sudo chmod 6770 directory
+ls -l
+
+-rwsr-x--x  1 username username        0 May  1 12:13 executable*
+drwsrws---  1 username username        0 May  1 12:13 directory/
+```
+
+Or use the short term
+
+```sh
+sudo chmod u+s executable
+sudo chmod g+s directory
+ls -l
+
+-rwsr-x--x  1 username username        0 May  1 12:13 executable*
+drwsrws---  1 username username        0 May  1 12:13 directory/
+```
+
+Assign Sticky flag to directory
+
+```sh
+sudo chmod 1777 directory
+# or
+sudo chmod +t directory
+ls -l
+
+drwxrwxrwt  1 username username        0 May  1 12:13 directory/
+```
+
+Capital leter `S` indicates invalid special permission. From the below example a special permission from file owner or group was given but the file owner or file group has no permission to execute.
+
+```sh
+sudo chmod 6701 executable
+sudo chmod 6665 directory
+ls -l
+
+-rws--S--x  1 username username        0 May  1 12:13 executable*
+-rwSrwSr-x  1 username username        0 May  1 12:13 directory/
+```
+
+### Removing Special Permissions
+
+We can remove the special bits by using `-` instead of `+` in `chmod` command.
+
+```sh
+sudo chmod u-s executable
+sudo chmod g-s directory
+sudo chmod -t directory
+```
+
 <center>- end -</center>
+```
