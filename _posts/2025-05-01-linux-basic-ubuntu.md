@@ -48,9 +48,9 @@ The Linux filesystem organizes components logically by purpose, unlike Windows, 
   - `/snap` - directory for <u>third-party packages managed by Canonical, self-contained that updates automatically</u>
     - `/snap/docker/current -> 1234`
     - `/snap/docker/1234/bin`
-  - `/var/lib` - variable dependencies of application while running
+  - `/var/lib` - variable dependencies of application while running. (application data)
     - `/var/lib/mysql` database files
-  - `/var/log` - variable data storage application logs while running,
+  - `/var/log` - data storage for application logs.
     - `/var/log/mysql`
     - `/var/log/nginx`
 
@@ -264,4 +264,3 @@ sudo chmod -t directory
 ```
 
 <center>- end -</center>
-```
